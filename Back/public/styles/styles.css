@@ -1,6 +1,8 @@
 #my_img
 {
-    border-radius: 50%;;
+    border-radius: 50%;
+    max-width: 220px;
+    height: auto;
 }
 #sora
 {
@@ -29,7 +31,7 @@
 .card
 {
     border-radius: 20px;
-     box-shadow: 5px 5px 3px #CDC6BD;
+    box-shadow: 5px 5px 3px #CDC6BD;
 }
 .btn{
     width:150px;
@@ -40,4 +42,10 @@ body{
 #formform
 {
     width:50rem;
+}
+.img-fluid
+{
+    max-width: 500px;
+    height: auto;
+    border-radius: 2%;
 }

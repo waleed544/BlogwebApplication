@@ -3,12 +3,29 @@ import fs from "fs"
 import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import multer from "multer";
 
+
+var backslash="\\";
 const __dirname=dirname(fileURLToPath(import.meta.url));
+const uploadpath=`${dirname}${backslash}public${backslash}uploads`;
+
+const storage=multer.diskStorage(
+  {
+    destination: function(req,file,cb)
+    {
+      cb(null,"public/uploads");
+    }
+    ,filename :function(req,file,cb){
+      const uniquesuffux=Date.now()+"-"+Math.round(Math.random()*1E9);
+      cb(null,uniquesuffux+"-"+file.originalname);
+    }
+  }
+);
+const upload=multer({storage: storage});
 
 const app=express();
 const port=3000;
-var backslash="\\";
 var postspath=`${__dirname}${backslash}posts.json`;
 const json=bodyParser.json;
 
@@ -56,11 +73,12 @@ app.listen(port,(req,res)=>
     console.log(`port started  on ${port}`);
 })
 
-app.post("/add-post",(req,res)=>
+app.post("/add-post",upload.single("image"),(req,res)=>
 {
    const titlepost=req.body["title"];
    const bodypost=req.body["content"];
-   const post={titlepost,bodypost};
+   const imagepath = `/uploads/${req.file.filename}`; // fallback
+   const post={titlepost,bodypost,imagepath};
     savePosts(post);
   //  const _posts=getPosts();
     // const _posts=getPosts();
