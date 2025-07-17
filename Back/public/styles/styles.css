@@ -1,0 +1,43 @@
+#my_img
+{
+    border-radius: 50%;;
+}
+#sora
+{
+  margin-top: -5rem;
+}
+#cont1 {
+    background-image: url("/photos/sea.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height:20rem;
+    margin-bottom: 8rem;
+}
+#cont1 h1{
+    color :white
+}
+.gradient-background {
+  background: linear-gradient(300deg, #FFFFFF, #F5F5F5, #F2F1EC);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+.card
+{
+    border-radius: 20px;
+     box-shadow: 5px 5px 3px #CDC6BD;
+}
+.btn{
+    width:150px;
+}
+body{
+    background-color: #212529;
+}
+#formform
+{
+    width:50rem;
+}
