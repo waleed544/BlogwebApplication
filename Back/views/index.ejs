@@ -45,30 +45,39 @@
         <% postsarr.forEach((element, index) => { %>
 
   <!-- Default View Card -->
-  <div class="default-card " id="defcard-<%=index%>">
-    <div class="container d-flex flex-column align-items-center">
-      <div class="card d-block m-3 d-flex flex-column align-items-center" >
-        <img class="card-img-top img-fluid " src="<%= element["imagepath"]  %>" alt="Card image cap" />
-        <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <h5 class="card-title"><%= element["titlepost"] %></h5>
-          <p class="card-text"><%= element["bodypost"] %></p>
-          <div class="d-flex flex-row">
-            <form action="/delete-post" method="post" class="m-3">
-              <input type="hidden" name="id" value="<%= index %>">
-              <button type="submit" class="btn btn-dark">Delete</button>
-            </form>
-            <button type="button" class="btn btn-dark m-3 edit-btn "  data-index="<%= index %>">Edit</button>
-          </div>
+<div class="default-card d-flex flex-column align-items-center justify-content-center" id="defcard-<%= index %>">
+  <div class=" d-flex flex-column align-items-center justify-content-center" style=" max-width: 50%;">
+    <div class="card m-3 d-flex flex-column align-items-center p-2 justify-content-center" >
+      <img
+        class="card-img-top"
+        src="<%= element['imagepath'] %>"
+        alt="Card image cap"
+        style="width: auto; max-width: 100%; height: auto;"
+      />
+      <div class="card-body d-flex flex-column align-items-center justify-content-center">
+        <h5 class="card-title"><%= element["titlepost"] %></h5>
+        <p class="card-text"><%= element["bodypost"] %></p>
+        <div class="d-flex flex-row">
+          <form action="/delete-post" method="post" class="m-3">
+            <input type="hidden" name="id" value="<%= index %>">
+            <button type="submit" class="btn btn-dark">Delete</button>
+          </form>
+          <button type="button" class="btn btn-dark m-3 edit-btn" data-index="<%= index %>">Edit</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <!-- Hidden Edit Form -->
- <div class="container d-flex flex-column align-items-center d-none " id="hidcard-<%=index%>">
-      <div class="card d-block m-3 d-flex flex-column align-items-center" >
-        <img class="card-img-top img-fluid" src="<%= element["imagepath"]  %>" alt="Card image cap"  />
-        <div class="card-body d-flex flex-column align-items-center justify-content-center">
+ <div class=" d-flex flex-column align-items-center d-none " id="hidcard-<%=index%>">
+      <div class="card d-block m-3 d-flex flex-column align-items-center" style=" max-width: 55%;" >
+        <img class=" img-fluid"
+         src="<%= element["imagepath"]  %>"
+          alt="Card image cap"  
+          style="width: auto; max-width: 100%; height: auto;"
+         />
+        <div class=" d-flex flex-column align-items-center justify-content-center">
        <form action="/edit-post" method="POST" class=" my-3" id="formform">
       <input type="hidden" name="id" value="<%= index %>">
       <input name="title" class="form-control mb-2 title-input " placeholder="Post Title" required value="<%= element['titlepost'] %>">
